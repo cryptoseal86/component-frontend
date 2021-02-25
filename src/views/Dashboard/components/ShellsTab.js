@@ -49,12 +49,12 @@ const ShellName = styled.span`
   align-items: center;
   display: flex;
   flex: 1.5;
+  text-align: center;
   @media (max-width: 512px) {
     flex: 2.5;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: flex-start;
-    text-align: center;
   }
 `
 const Symbol = styled.span`
