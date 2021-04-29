@@ -191,18 +191,6 @@ const ShellsTab = ({showShell}) => {
     <StyledShellsTab>
       <StyledInfoBlock>
 
-        <p className="title" style={{fontSize: '24px', fontWeight: 'bold'}}>
-          ANNOUNCEMENT: LIQUIDITY FARMING
-        </p>
-
-        <p style={{ textAlign: 'left', fontSize: '20px' }}>
-          Some of pools listed below are incentivized with upcoming CMP governance token. The distribution will be applied retrospectively.
-        </p>
-
-        <p style={{ textAlign: 'left', fontSize: '20px', marginTop: '-7px' }}>
-          Track your share: <a style={{ color: theme.palette.primary.main}} target="_blank" rel="noopener noreferrer" href="https://distribution.component.finance">rewards estimation page</a>
-        </p>
-
       </StyledInfoBlock>
       <PoolsTable>
         <Row head>

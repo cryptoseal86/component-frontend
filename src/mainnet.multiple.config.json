@@ -11,7 +11,7 @@
       "swapDecimals": 2,
       "tag": "STABLECOIN1",
       "hideapy": true,
-      "farming": true,
+      "farming": false,
       "assets": [
         {
           "address": "0xFe7ed09C4956f7cdb54eC4ffCB9818Db2D7025b8",
