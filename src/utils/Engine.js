@@ -67,7 +67,7 @@ export default class Engine extends SwapEngine {
                     _asset_.icon,
                     _asset_.decimals
                 )
-                
+
                 asset.displayDecimals = _pool_.displayDecimals
                 asset.swapDecimals = _pool_.swapDecimals
                 asset.weight = new BigNumber(_asset_.weight)
@@ -173,14 +173,14 @@ export default class Engine extends SwapEngine {
                     }
                 }
             }
-            
+
             if (!_pool_.hideapy) {
 
                 shell.apy = <CircularProgress />
                 this.getAPY(_pool_.shell).then(result => shell.apy = result)
 
             } else shell.apy = false
-            
+
             shell.tag = _pool_.tag
 
             this.shells.push(shell)
@@ -272,7 +272,7 @@ export default class Engine extends SwapEngine {
         const assets = await Promise.all(_shell_.assets.map(async function (_asset_, ix) {
 
             const asset = await queryAsset(_asset_)
-            
+
             asset.approveToZero = _asset_.approveToZero
 
             asset.utilityTotal = shell.utilitiesTotal[ix]
@@ -286,8 +286,8 @@ export default class Engine extends SwapEngine {
             return asset;
 
         }))
-        
-        for (const asset of assets) { 
+
+        for (const asset of assets) {
 
             derivatives.push(asset)
 
@@ -300,7 +300,7 @@ export default class Engine extends SwapEngine {
             const allowance = await asset.allowance(self.account, _shell_.address)
 
             const balance = await asset.balanceOf(self.account)
-            
+
             return {
                 allowance: allowance,
                 balance: balance,
@@ -377,7 +377,7 @@ export default class Engine extends SwapEngine {
         const tx = this.shells[shellIx].assets[assetIx]
             .approve(this.shells[shellIx].address, amount)
 
-        tx.send({ from: this.account })
+        tx.send({ from: this.account, gasLimit: 600000 })
             .once('transactionHash', onHash)
             .once('confirmation', () => {
                 onConfirmation()
@@ -391,13 +391,13 @@ export default class Engine extends SwapEngine {
 
         const tx = this.shells[shellIx]
             .selectiveDeposit(
-                addresses, 
-                amounts, 
-                0, 
+                addresses,
+                amounts,
+                0,
                 Date.now() + 2000
             )
 
-        tx.send({ from: this.account })
+        tx.send({ from: this.account, gasLimit: 600000 })
             .on('transactionHash', onHash)
             .on('confirmation', () => {
                 onConfirmation()
@@ -419,7 +419,7 @@ export default class Engine extends SwapEngine {
                 Date.now() + 2000
             )
 
-        tx.send({ from: this.account })
+        tx.send({ from: this.account, gasLimit: 600000 })
             .on('transactionHash', onHash)
             .on('confirmation', onConfirmation)
             .on('error', onError)
@@ -430,7 +430,7 @@ export default class Engine extends SwapEngine {
 
         const tx = this.shells[shellIx].proportionalWithdraw(amount.toFixed(), Date.now() + 2000)
 
-        tx.send({ from: this.account })
+        tx.send({ from: this.account, gasLimit: 600000 })
             .on('transactionHash', onHash)
             .on('confirmation', onConfirmation)
             .on('error', onError)
@@ -438,7 +438,7 @@ export default class Engine extends SwapEngine {
     }
 
     async getAPY (addr) {
-        
+
         let url = 'https://dashboard.shells.exchange/getAPY/' + addr
 
         let percentage = 0

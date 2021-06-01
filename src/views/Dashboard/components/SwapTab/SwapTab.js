@@ -258,7 +258,7 @@ const SwapTab = () => {
       sanitizeNumber(targetValue, target.decimals)
     )
 
-    tx.send({ from: state.get('account') })
+    tx.send({ from: state.get('account'), gasLimit: 600000})
       .once('transactionHash', handleTransactionHash)
       .once('confirmation', handleConfirmation)
       .on('error', handleError)
@@ -303,7 +303,7 @@ const SwapTab = () => {
       amount.toString()
     )
 
-    tx.send({ from: state.get('account') })
+    tx.send({ from: state.get('account'), gasLimit: 600000 })
       .once('transactionHash', onTxHash)
       .once('confirmation', onConfirmation)
       .on('error', onError)
