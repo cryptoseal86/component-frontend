@@ -64,6 +64,7 @@ export const ShellNamePart = styled.span`
   margin: 4px;
   padding-right: 8px;
   position: relative;
+  text-align: center;
   :first-child {
     margin-left: 0;
   }
