@@ -28,7 +28,7 @@ export default function (){
   return (
     <StyledLogo>
       <StyledImg src={logo} />
-      <StyledName>component on BSC</StyledName>
+      <StyledName>component on xDAI</StyledName>
     </StyledLogo>
   )
 }
