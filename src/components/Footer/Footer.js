@@ -31,7 +31,7 @@ const StyledSocialIcon = styled.a`
   }
 `
 
-const IconBox = styled.a`
+const IconBox = styled.span`
   width: 44px;
   height: 44px;
   display: flex;
@@ -47,7 +47,7 @@ const Footer = ({ shellIx }) => {
   if (shellIx !== null) {
     etherscan = config.network === 1 ? 'https://etherscan.io/address/' + config.pools[shellIx].shell
       : config.network === 41 ? 'https://kovan.etherscan.io/address/' + config.pools[shellIx].shell
-        : config.network === 100 ? 'https://blockscout.com/poa/xdai/address/' + config.pools[shellIx].shell
+        : config.network === 56 ? 'https://bscscan.com/address/' + config.pools[shellIx].shell
           : ''
   }
   return (
@@ -69,9 +69,9 @@ const Footer = ({ shellIx }) => {
           <FontAwesomeIcon style={{color: theme.palette.primary.main}} icon={faTelegram} size="lg"/>
         </StyledSocialIcon>
         {shellIx !== null && (
-          <StyledSocialIcon>
-            <IconBox href={etherscan} target="_blank">
-              <img alt="" src={etherscanIcon}/>
+          <StyledSocialIcon href={etherscan} target="_blank">
+            <IconBox >
+              <img src={etherscanIcon} alt="etherscan logo"/>
             </IconBox>
           </StyledSocialIcon>
         )}
